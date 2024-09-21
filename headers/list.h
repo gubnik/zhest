@@ -14,5 +14,6 @@ extern aptr llalloc ();
 extern aptr llfree (aptr);
 
 llnode * init_node ();
+void destroy_node (llnode *);
 
 #endif // !ZHEST_LIST

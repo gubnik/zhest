@@ -11,3 +11,9 @@ llnode * init_node ()
   }
   return nnode;
 }
+
+void destroy_node(llnode * node)
+{
+  if (!node) return;
+  llfree(node);
+}
