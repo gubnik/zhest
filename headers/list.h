@@ -1,0 +1,18 @@
+#ifndef ZHEST_LIST
+#define ZHEST_LIST 
+
+#include "types.h"
+
+typedef struct llnode
+{
+  struct llnode * next;
+  stddata data;
+}
+llnode;
+
+extern aptr llalloc ();
+extern aptr llfree (aptr);
+
+llnode * init_node ();
+
+#endif // !ZHEST_LIST
