@@ -10,8 +10,9 @@ sysexit:
   ret
 
 alloc:
+  ; exit if alloc size is 0
   cmp rdi, 0
-  je .invalid_size
+  je .mmap_fail
   mov rax, rdi
   mov [alloc_size], rax
   xor rdi, rdi
@@ -25,27 +26,8 @@ alloc:
   syscall
   js .mmap_fail
   ret
-
-.invalid_size:
-  mov eax, 4
-  mov ebx, 1
-  mov ecx, invsz
-  mov edx, 26
-  int 0x80
-  mov eax, 1
-  xor ebx, ebx
-  int 0x80
-  ret
-
-.mmap_fail:
-  mov eax, 4
-  mov ebx, 1
-  mov ecx, memerr
-  mov edx, 26
-  int 0x80
-  mov eax, 1
-  xor ebx, ebx
-  int 0x80
+  .mmap_fail:
+  mov rax, 0
   ret
 
 dealloc:
@@ -57,5 +39,3 @@ dealloc:
 
 section .data
   alloc_size dq 0
-  invsz db "Cannot allocate 0 bytes",
-  memerr db "Mmap failed",
