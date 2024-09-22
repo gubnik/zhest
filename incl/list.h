@@ -10,10 +10,8 @@ typedef struct llnode
 }
 llnode;
 
-extern aptr llalloc ();
-extern aptr llfree (aptr);
-
-llnode * init_node ();
+llnode * init_node (stddata);
 void destroy_node (llnode *);
+llnode * append_node (stddata);
 
 #endif // !ZHEST_LIST
