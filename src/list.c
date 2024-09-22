@@ -1,19 +1,21 @@
 #include "../headers/list.h"
+#include "../headers/syscalls.h"
 
-llnode * init_node ()
+llnode * init_node (stddata data)
 {
   llnode * nnode = 0;
-  nnode = llalloc();
+  nnode = alloc(sizeof(llnode));
   if (nnode)
   {
-    nnode->data = 8;
+    nnode->data = data;
     nnode->next = (aptr) 0;
   }
   return nnode;
 }
 
-void destroy_node(llnode * node)
+void destroy_node (llnode * node)
 {
   if (!node) return;
-  llfree(node);
+  dealloc(node, sizeof(llnode));
 }
+
