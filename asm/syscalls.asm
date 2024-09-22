@@ -13,8 +13,10 @@ alloc:
   ; exit if alloc size is 0
   cmp rdi, 0
   je .mmap_fail
+  ; store size 
   mov rax, rdi
   mov [alloc_size], rax
+  ; set mmap values
   xor rdi, rdi
   mov rsi, [alloc_size]
   mov rdx, 3
@@ -24,6 +26,7 @@ alloc:
   ; mmap syscall
   mov rax, 9
   syscall
+  ; if negative, mmap failed
   js .mmap_fail
   ret
   .mmap_fail:
