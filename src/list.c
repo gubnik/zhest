@@ -40,7 +40,7 @@ void iterate_list (llnode * ptr, llnodeiter iterfunc)
   stddata flags = 0;
   while (iter)
   {
-    iterfunc(iter, flags);
+    iterfunc(iter, &flags);
     iter = iter->next;
   }
 }

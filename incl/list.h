@@ -10,7 +10,7 @@ typedef struct llnode
 }
 llnode;
 
-typedef void (*llnodeiter)(llnode *, stddata);
+typedef void (*llnodeiter)(llnode *, stddata *);
 
 llnode * init_node (stddata);
 llnode * append_node (llnode *, stddata);
