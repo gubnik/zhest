@@ -1,5 +1,5 @@
-#include "../headers/list.h"
-#include "../headers/syscalls.h"
+#include "../incl/list.h"
+#include "../incl/syscalls.h"
 
 llnode * init_node (stddata data)
 {
