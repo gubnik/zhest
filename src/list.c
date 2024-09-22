@@ -33,3 +33,14 @@ llnode * append_node (llnode * ptr, stddata ndata)
   nnode->next = init_node(ndata);
   return nnode->next;
 }
+
+void iterate_list (llnode * ptr, llnodeiter iterfunc)
+{
+  llnode * iter = ptr;
+  stddata flags = 0;
+  while (iter)
+  {
+    iterfunc(iter, flags);
+    iter = iter->next;
+  }
+}
