@@ -19,3 +19,17 @@ void destroy_node (llnode * node)
   dealloc(node, sizeof(llnode));
 }
 
+llnode * append_node (llnode * ptr, stddata ndata)
+{
+  if (!ptr)
+  {
+    return 0;
+  }
+  llnode * nnode = ptr;
+  while (nnode->next)
+  {
+    nnode = nnode->next;
+  }
+  nnode->next = init_node(ndata);
+  return nnode->next;
+}

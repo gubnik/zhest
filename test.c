@@ -4,14 +4,16 @@
 
 int main (int argc, char ** argv)
 {
-  llnode * node = init_node(42);
-  if (!node)
+  llnode * root = init_node(42);
+  llnode * node1 = append_node(root, 69);
+  llnode * node2 = append_node(root, 1337);
+  
+  llnode * iter = root;
+  while (iter)
   {
-    printf("Node : %p\n", node);
-    sysexit(0);
+    printf("Node : %p %p %lu\n", iter, iter->next, iter->data);
+    iter = iter->next;
   }
-  printf("Node : %p %p %lu\n", node, node->next, node->data);
-  destroy_node(node);
   sysexit(42);
   return 0;
 }

@@ -12,6 +12,6 @@ llnode;
 
 llnode * init_node (stddata);
 void destroy_node (llnode *);
-llnode * append_node (stddata);
+llnode * append_node (llnode *, stddata);
 
 #endif // !ZHEST_LIST
