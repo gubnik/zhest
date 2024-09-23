@@ -1,6 +1,7 @@
 #include "incl/list.h"
 #include "incl/syscalls.h"
-#include <stdio.h>
+#include "incl/printbuf.h"
+//#include <stdio.h>
 
 #define FLAG_STOP 
 
@@ -10,7 +11,8 @@ void print_node (llnode * iter, stddata * flagptr)
   {
     *flagptr |= iter->data;
   }
-  printf("Node : %p %p %lu\nFlags : %lx\n", iter, iter->next, iter->data, *flagptr);
+  printbuf("");
+  //printf("Node : %p %p %lu\nFlags : %lx\n", iter, iter->next, iter->data, *flagptr);
 }
 
 int main (int argc, char ** argv)
