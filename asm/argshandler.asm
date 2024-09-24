@@ -89,4 +89,4 @@ handleargs:
   jmp .body
 
 section .bss
-  args resb 32
+  args resb 4
