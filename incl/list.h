@@ -5,8 +5,8 @@
 
 typedef struct llnode
 {
-  struct llnode * next;
   stddata data;
+  struct llnode * next;
 }
 llnode;
 

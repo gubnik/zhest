@@ -1,5 +1,6 @@
 section .text
   global printbuf
+  global charout
 
 printbuf:
   test rdi, rdi
@@ -20,4 +21,15 @@ printbuf:
   syscall
   
   .done:
+  ret
+
+charout:
+  push rdi
+  mov rsi, rsp
+  mov rax, 1
+  mov rdi, 1
+  mov rdx, 1
+  ; не работает блять
+  syscall
+  add rsp, 8
   ret

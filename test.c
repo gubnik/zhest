@@ -1,26 +1,24 @@
 #include "incl/list.h"
-#include "incl/syscalls.h"
 #include "incl/printbuf.h"
-//#include <stdio.h>
+#include "incl/syscalls.h"
 
 #define FLAG_STOP 
 
 void print_node (llnode * iter, stddata * flagptr)
 {
-  if (*flagptr < 0x0000AAAA)
-  {
-    *flagptr |= iter->data;
-  }
-  printbuf("");
-  //printf("Node : %p %p %lu\nFlags : %lx\n", iter, iter->next, iter->data, *flagptr);
+  char * msg = "Ave ";
+  if ((*flagptr)++ % 2) msg = "Caesar!\n";
+  printbuf(msg);
 }
 
 int main (int argc, char ** argv)
 {
   llnode * root = init_node(42);
-  llnode * node1 = append_node(root, 69);
-  llnode * node2 = append_node(root, 1337);
+  for (int i = 0; i < 11; i++) append_node(root, (i % 3 == 0) ? 69 : (i % 3 == 1) ? 420 : 1337 );
   iterate_list(root, print_node);
+  //printform("Nigger", 1, 2, 3);
+  charout('a');
   sysexit(42);
+  
   return 0;
 }
